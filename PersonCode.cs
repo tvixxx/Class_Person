@@ -12,36 +12,60 @@ namespace intuinless1
 
         private string _LastName;
 
-        public string FirstName 
+        private int _Age;
 
+        public string FirstName 
         {
             get { return _FirstName; }
 
-            set { value = _FirstName; }
+            set {  _FirstName = value;  }
         }
 
-        public string LastName
+        public string LastName 
 
         {
             get { return _LastName; }
-            set { value = _LastName; }
+            set { _LastName = value; }
+       }
 
+        public int Age
+        {
+            get { return _Age; }
+
+            set {
+                if (value >= 0 )
+                {
+                    _Age = value;
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
+            }
         }
-        public  Person(string firstName , string lastName )
+
+        public  Person(string firstName , string lastName , int age )
         {
             FirstName = firstName;
 
             LastName = lastName;
-        }
 
-        //public void ShowFullInfoAboutThisPerson()
-       // {
-         //   Console.WriteLine("Name is: " + FirstName + " " + "LastName is: " + LastName);
-       // }
+            Age = age;
+        }
 
         public override string ToString()
         {
-            return ("Name is: " + FirstName + " " + "LastName is: " + LastName);
+            return ("Name is: " + FirstName + " " + "\nLastName is: " + LastName + " " + "\nAge is:" + " " + Age);
+        }
+
+        public void WriteHello(string someName)
+        {
+            Console.WriteLine("Hello" + " " + someName);
+        }
+
+        public void WriteEtcInfo()
+        {
+            Console.WriteLine("These info about ur new patient: ");
         }
     }
 
@@ -50,14 +74,10 @@ namespace intuinless1
 
       static void Main()
         {
-          Person person1 = new Person("Petr","loxov");
-         
+          Person person1 = new Person("Petr","loxov",18);
+          person1.WriteHello("Jo");
+          person1.WriteEtcInfo();
           
-          
-
-          //person1.ShowFullInfoAboutThisPerson();
-            
-            
           Console.WriteLine(person1);
         }
     }
